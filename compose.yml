@@ -2,12 +2,10 @@ services:
   create-astral:
     image: ghcr.io/kellegram/create-astral:main
     environment:
-        EULA: "FALSE"
-        RCON_PASSWORD: "hunter2"
+      EULA: "FALSE"
+      RCON_PASSWORD: "hunter2"
     ports:
       - 25565:25565
-    networks: 
-      - shared
     volumes:
       - ./ops.json:/data/ops.json:z
       - ./banned-players.json:/data/banned-players.json:z
@@ -16,16 +14,19 @@ services:
       - astral-world:/data/world:z
       - astral-backup:/data/backup:z
 
-  rcon-cli:
-    image: itzg/rcon-cli
+  web:
+    image: itzg/rcon
     environment:
-      RCON_HOST: create-astral
-      RCON_PORT: 25575
-      RCON_PASSWORD: "hunter2"
-    depends_on:
-      - create-astral
-    networks:
-      - shared
+      RWA_USERNAME: admin
+      RWA_PASSWORD: admin
+      RWA_ADMIN: "TRUE"
+      RWA_RCON_HOST: create-astral
+      # needs to match the RCON_PASSWORD configured for the container
+      RWA_RCON_PASSWORD: "hunter2"
+    ports:
+      - "4326:4326"
+      - "4327:4327"
+
 volumes:
   astral-world:
   astral-backup:
@@ -33,5 +34,3 @@ volumes:
 networks:
   default:
     enable_ipv6: true
-  shared:
-    driver: bridge
