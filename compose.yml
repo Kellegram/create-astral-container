@@ -1,6 +1,6 @@
 services:
   create-astral:
-    image: ghcr.io/Kellegram/create-astral:v2.1
+    image: ghcr.io/kellegram/create-astral:v2.1
     environment:
         EULA: "FALSE"
         RCON_PASSWORD: "hunter2"
