@@ -6,6 +6,8 @@ services:
         RCON_PASSWORD: "hunter2"
     ports:
       - 25565:25565
+    networks: 
+      - shared
     volumes:
       - ./ops.json:/data/ops.json:z
       - ./banned-players.json:/data/banned-players.json:z
@@ -13,6 +15,17 @@ services:
       - ./server.properties:/init/server.properties:z
       - astral-world:/data/world:z
       - astral-backup:/data/backup:z
+
+  rcon-cli:
+    image: itzg/rcon-cli
+    environment:
+      RCON_HOST: create-astral
+      RCON_PORT: 25575
+      RCON_PASSWORD: "hunter2"
+    depends_on:
+      - create-astral
+    networks:
+      - shared
 volumes:
   astral-world:
   astral-backup:
@@ -20,3 +33,5 @@ volumes:
 networks:
   default:
     enable_ipv6: true
+  shared:
+    driver: bridge
