@@ -18,7 +18,6 @@ RUN case "$TARGETPLATFORM" in \
     esac
 
 
-RUN mkdir /tmp/rcon
 RUN tar -xf /tmp/rcon.tar.gz --wildcards 'rcon*' -C /tmp/rcon --strip-components=1
 
 WORKDIR /data
