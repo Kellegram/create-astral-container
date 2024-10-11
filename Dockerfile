@@ -19,7 +19,7 @@ RUN case "$TARGETPLATFORM" in \
 
 
 RUN mkdir /tmp/rcon
-RUN tar -xf /tmp/rcon.tar.gz -C /tmp/rcon --strip-components=1
+RUN tar -xf /tmp/rcon.tar.gz --wildcards 'rcon*' -C /tmp/rcon --strip-components=1
 
 WORKDIR /data
 RUN curl -fsSL -o "/tmp/pack.zip" "https://www.curseforge.com/api/v1/mods/681792/files/5795941/download"
