@@ -32,7 +32,7 @@ RUN curl -fsSL -o "server.jar" "https://meta.fabricmc.net/v2/versions/loader/1.1
 
 FROM eclipse-temurin:17-jre-jammy
 COPY --from=builder --chmod=755 /tmp/rcon/rcon /usr/local/bin/rcon-cli
-COPY --from=builder --chmod=644 /tmp/rcon/rcon.yaml /etc/rcon.yaml
+COPY --from=builder --chmod=644 /tmp/rcon/.rcon-cli.yaml /etc/.rcon-cli.yaml
 COPY --chmod=755 rcon /usr/local/bin/rcon
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
