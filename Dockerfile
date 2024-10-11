@@ -17,11 +17,10 @@ RUN case "$TARGETPLATFORM" in \
     *) echo "Unsupported platform: $TARGETPLATFORM"; exit 1 ;; \
     esac
 
+RUN mkdir /tmp/rcon
+RUN tar -xf /tmp/rcon.tar.gz -C /tmp/rcon
 
-RUN tar -xf /tmp/rcon.tar.gz
 
-# For debugging
-RUN ls -alh /tmp
 
 
 WORKDIR /data
