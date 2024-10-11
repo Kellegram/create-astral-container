@@ -17,11 +17,6 @@ RUN case "$TARGETPLATFORM" in \
     *) echo "Unsupported platform: $TARGETPLATFORM"; exit 1 ;; \
     esac
 
-RUN mkdir /tmp/rcon
-RUN tar -xf /tmp/rcon.tar.gz -C /tmp/rcon
-
-
-
 
 WORKDIR /data
 RUN curl -fsSL -o "/tmp/pack.zip" "https://www.curseforge.com/api/v1/mods/681792/files/5795941/download"
