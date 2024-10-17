@@ -7,7 +7,7 @@ To set up:
 - Clone this repository
 - Accept the Minecraft EULA by changing `EULA: "FALSE"` to `EULA: "TRUE"` in compose.yml
 - Choose a secure password for RCON. (RCON is not exposed to the network by default)
-- Run `podman-compose up -d`
+- Run `podman-compose up -d` (or `docker compose up -d`)
 
 The server should now be up and running.
 
@@ -15,6 +15,11 @@ Run
 ```bash
 podman exec -itl rcon
 ```
+or
+```bash
+docker exec -it create-astral-container-create-astral-1 rcon
+```
+
 to get access to the RCON interface to the last server you started where you can run admin commands. (`RCON_PASSWORD` must be set for this. The `-l` flag to operate on the last container is only supported by podman. Enter the container name for `docker` or if you have interacted with another container in the meantime.)
 
 # Configuration
