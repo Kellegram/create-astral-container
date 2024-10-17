@@ -2,7 +2,7 @@ FROM eclipse-temurin:17-jre-jammy AS builder
 RUN apt-get -qq update && apt-get -qq install -y unzip jq
 
 WORKDIR /data
-RUN curl -fsSL -o "/tmp/pack.zip" "https://www.curseforge.com/api/v1/mods/681792/files/5795941/download"
+RUN curl -fsSL -o "/tmp/pack.zip" "https://www.curseforge.com/api/v1/mods/681792/files/5817679/download"
 RUN curl -fsSL -o "/tmp/old.zip" "https://www.curseforge.com/api/v1/mods/681792/files/4496671/download"
 RUN unzip -q /tmp/pack.zip -d /data
 RUN unzip -q /tmp/old.zip -d /tmp/old/
