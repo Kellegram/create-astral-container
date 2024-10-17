@@ -15,19 +15,6 @@ services:
       - astral-world:/data/world:z
       - astral-backup:/data/backup:z
 
-  web:
-    image: itzg/rcon
-    environment:
-      RWA_USERNAME: admin
-      RWA_PASSWORD: admin
-      RWA_ADMIN: "TRUE"
-      RWA_RCON_HOST: create-astral
-      # needs to match the RCON_PASSWORD configured for the container
-      RWA_RCON_PASSWORD: "hunter2"
-    ports:
-      - "4326:4326"
-      - "4327:4327"
-
 volumes:
   astral-world:
   astral-backup:
